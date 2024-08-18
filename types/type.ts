@@ -23,16 +23,11 @@ export type CursorState =
       isPressed: boolean;
     };
 
-export type Reaction = {
-  value: string;
-  timestamp: number;
-  point: { x: number; y: number };
-};
-
-export type ReactionEvent = {
-  x: number;
-  y: number;
-  value: string;
+export type NavbarProps = {
+  activeElement: ActiveElement;
+  imageInputRef: React.MutableRefObject<HTMLInputElement | null>;
+  handleImageUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleActiveElement: (element: ActiveElement) => void;
 };
 
 export type ActiveElement = {
