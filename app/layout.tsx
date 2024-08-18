@@ -1,30 +1,19 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { Providers } from "@/app/Providers";
-import { auth } from "@/auth";
-import "../styles/normalize.css";
-import "@liveblocks/react-ui/styles.css";
-import "@liveblocks/react-ui/styles/dark/media-query.css";
-import "../styles/globals.css";
-import "../styles/text-editor.css";
-import "../styles/text-editor-comments.css";
+import "./global.css";
+import { Room } from "./Room";
 
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "Liveblocks Starter Kit",
+export const metadata = {
+  title: "Liveblocks Cursors",
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const session = await auth();
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Providers session={session}>{children}</Providers>
+      <body className="bg-slate-800">
+        <Room>{ children }</Room>
       </body>
     </html>
   );
