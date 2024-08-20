@@ -13,3 +13,5 @@ Kickstart start your collaborative Next.js app with this starter kit.
 
 [Read the guide](http://liveblocks.io/docs/guides/nextjs-starter-kit) to get
 started.
+
+Checkout the branch `feature/live-cursors` to have a try.
