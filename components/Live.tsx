@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useOthers, useMyPresence } from "@/liveblocks.config";
 import LiveCursors from "./cursor/LiveCursors";
 import CursorChat from "./cursor/CursorChat";
+import Canvas from "./canvas/Canvas";
 import { CursorMode, CursorState } from "@/types/type";
 
 function Live() {
@@ -75,12 +76,12 @@ function Live() {
 
   return (
     <div
-      className="h-[100vh] w-full flex justify-center items-center text-center"
+      className="h-[100vh] w-full relative flex flex-col justify-center items-center text-center"
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
       onPointerDown={handlePointerDown}
     >
-      <h1 className="text-3xl text-white">Hello Liveblocks</h1>
+      <Canvas />
 
       {cursor && (
         <CursorChat

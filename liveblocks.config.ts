@@ -1,12 +1,16 @@
-import { type LiveMap, createClient } from "@liveblocks/client";
+import { createClient, LiveObject, LiveMap } from "@liveblocks/client";
 import { createRoomContext } from "@liveblocks/react";
-
-import { ReactionEvent } from "@/types/type";
 
 const client = createClient({
   throttle: 16,
   publicApiKey: process.env.NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_KEY!,
 });
+
+type Shape = LiveObject<{
+  x: number;
+  y: number;
+  fill: string;
+}>;
 
 // Presence represents the properties that exist on every user in the Room
 // and that will automatically be kept in sync. Accessible through the
@@ -14,6 +18,7 @@ const client = createClient({
 export type Presence = {
   cursor: { x: number; y: number } | null;
   message: string | null;
+  selectedShape: string | null;
 };
 
 // Optionally, Storage represents the shared document that persists in the
@@ -21,23 +26,7 @@ export type Presence = {
 // LiveList, LiveMap, LiveObject instances, for which updates are
 // automatically persisted and synced to all connected clients.
 type Storage = {
-  // author: LiveObject<{ firstName: string, lastName: string }>,
-  // ...
-  canvasObjects: LiveMap<string, any>;
-};
-
-// Optionally, the type of custom events broadcast and listened to in this
-// room. Use a union for multiple events. Must be JSON-serializable.
-type RoomEvent = ReactionEvent;
-
-// Optionally, when using Comments, ThreadMetadata represents metadata on
-// each thread. Can only contain booleans, strings, and numbers.
-export type ThreadMetadata = {
-  resolved: boolean;
-  zIndex: number;
-  time?: number;
-  x: number;
-  y: number;
+  shapes: LiveMap<string, Shape>;
 };
 
 export const {
@@ -55,7 +44,6 @@ export const {
     useEventListener,
     useErrorListener,
     useStorage,
-    useBatch,
     useHistory,
     useUndo,
     useRedo,
@@ -74,6 +62,4 @@ export const {
     useAddReaction,
     useRemoveReaction,
   },
-} = createRoomContext<Presence, Storage, {}, RoomEvent, ThreadMetadata>(
-  client
-);
+} = createRoomContext<Presence, Storage>(client);

@@ -12,9 +12,10 @@ export const Room = ({ children }: PropsWithChildren) => {
       initialPresence={{
         cursor: null,
         message: null,
+        selectedShape: null,
       }}
       initialStorage={{
-        canvasObjects: new LiveMap(),
+        shapes: new LiveMap()
       }}
     >
       <ClientSideSuspense fallback={<div>Loading…</div>}>
