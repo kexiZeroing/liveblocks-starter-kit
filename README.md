@@ -14,4 +14,9 @@ Kickstart start your collaborative Next.js app with this starter kit.
 [Read the guide](http://liveblocks.io/docs/guides/nextjs-starter-kit) to get
 started.
 
-Checkout the branch `feature/live-cursors` to have a try.
+- Collaborativet Text Editor: https://liveblocks.io/examples/collaborative-text-editor/nextjs-yjs-quill
+- Collaborative Code Editor: https://liveblocks.io/examples/collaborative-code-editor/nextjs-yjs-codemirror
+- Use the branch `feature/live-cursors` to learn and experiment on it.
+
+> [!NOTE]
+> Liveblock only provides a fully hosted solution.
